@@ -15,7 +15,8 @@ zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%f'
 zstyle ':vcs_info:*' enable git
 
 # Use exa instead of ls
-alias ls="exa"
+#alias ls="exa"
+# exa is cooked, don't bother for now
 
 # Use neovim instead of vim and vi
 alias vim="nvim"
@@ -34,4 +35,10 @@ export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{n
 alias fvim='vim $(fzf --preview "bat --style numbers,changes --color=always {} | head -500")'
 
 # enable syntax highlighting
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Different location if under linux or mac
+case "$(uname -sr)" in
+    Darwin*)
+        source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh;;
+    Linux*)
+        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh;;
+esac
