@@ -1,0 +1,56 @@
+@define-color foreground #ffffff;
+@define-color foreground-alt #eff0f1;
+@define-color foreground-inactive #7f8c8d;
+@define-color background #000000;
+@define-color background-inactive #232629;
+@define-color background-alt #31363b;
+
+* {
+    font-family: Adwaita;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+}
+
+#waybar {
+    color: @foreground;
+    background-color: @background;
+}
+
+#workspaces button {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    color: @foreground-inactive;
+}
+
+#workspaces button.empty {
+    color: @foreground-inactive;
+}
+
+#workspaces button.occupied {
+    color: @foreground;
+}
+
+#workspaces button.focused {
+    background-color: @foreground-alt;
+    color: @foreground-inactive;
+}
+
+#wireplumber,
+#bat,
+#tray,
+#usage,
+#net {
+    background-color: @background;
+    border-radius: 3px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-left: 0.3em;
+}
+
+#battery,
+#memory,
+#language,
+#network {
+    margin-right: 0.8em;
+}

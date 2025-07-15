@@ -1,3 +1,8 @@
+#History
+HISTFILE=~/.zsh_history
+SAVEHIST=10000
+HISTSIZE=10000
+setopt share_history
 #Git Integration
 autoload -Uz compinit && compinit
 
@@ -16,7 +21,12 @@ zstyle ':vcs_info:*' enable git
 
 # Use exa instead of ls
 #alias ls="exa"
-# exa is cooked, don't bother for now
+# exa is cooked, don't bother for now, just alias ls for colour
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+MAKEFLAGS="--jobs=$(nproc)"
+
 
 # Use neovim instead of vim and vi
 alias vim="nvim"
@@ -29,10 +39,15 @@ eval "$(zoxide init --cmd cd zsh)"
 # Add node to the path
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 
+#Set up QT
+export QT_QPA_PLATFORM="Wayland"
+export QT_QPA_PLATFORMTHEME="qt6ct"
+
 #fzf things
-export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules,.git,Library}"'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-alias fvim='vim $(fzf --preview "bat --style numbers,changes --color=always {} | head -500")'
+#export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules,.git,Library}"'
+#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+#alias fvim='vim $(fzf --preview "bat --style numbers,changes --color=always {} | head -500")'
+source <(fzf --zsh)
 
 # enable syntax highlighting
 # Different location if under linux or mac
