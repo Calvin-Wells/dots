@@ -19,9 +19,6 @@ PROMPT="%B%F{green}%n%f:%F{blue}%~%f "'${vcs_info_msg_0_}'$'\n'"%#%b "
 zstyle ':vcs_info:git:*' formats '%F{cyan}(%b)%f'
 zstyle ':vcs_info:*' enable git
 
-# Use exa instead of ls
-#alias ls="exa"
-# exa is cooked, don't bother for now, just alias ls for colour
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 
@@ -43,10 +40,6 @@ export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export QT_QPA_PLATFORM="Wayland"
 export QT_QPA_PLATFORMTHEME="qt6ct"
 
-#fzf things
-#export FZF_DEFAULT_COMMAND='rg --files --follow --no-ignore-vcs --hidden -g "!{node_modules,.git,Library}"'
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-#alias fvim='vim $(fzf --preview "bat --style numbers,changes --color=always {} | head -500")'
 source <(fzf --zsh)
 
 # enable syntax highlighting
