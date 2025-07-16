@@ -1,0 +1,11 @@
+max-history=10
+font=Adwaita Sans 11
+
+background-color=#000000AA
+height=200
+width=600
+border-color=#111111AA
+border-radius=10
+
+default-timeout=4000
+
