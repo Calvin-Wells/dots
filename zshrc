@@ -48,5 +48,5 @@ case "$(uname -sr)" in
     Darwin*)
         source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh;;
     Linux*)
-        source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh;;
+        source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh;;
 esac

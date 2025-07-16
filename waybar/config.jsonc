@@ -1,25 +1,32 @@
 // -*- mode: jsonc -*-
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    //"height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "layer": "top",
+    "height": 38,
+    "spacing": 4,
     "modules-left": [
-        "custom/run",
-        "niri/workspaces"
+        "niri/workspaces",
+	"niri/window"
     ],
     "modules-center": [
-        "clock"
     ],
     "modules-right": [
         "mpd",
         "tray",
+	"idle-inhibitor",
+	"network",
+	"bluetooth",
         "pulseaudio",
+	"battery",
+        "clock",
         "custom/wlogout"
     ],
 
+    "niri/window": {
+        // "format": "{app_id}",
+        "separate-outputs": true,
+        "icon": true,
+        "icon-size": 16
+    },
     "mpd": {
         "format": "{stateIcon} {artist} - {album} - {title}",
         "format-paused": "",
@@ -59,10 +66,39 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "tooltip-format": "{essid}:{gwaddr} via {ifname} ",
+        "format-linked": "",
+        "format-disconnected": "⚠",
+	"on-click": "nm-connection-editor"
+    },
+    "bluetooth": {
+        "format-on": "󰂯",
+        "format-off": "BT-off",
+        "format-disabled": "󰂲",
+        "format-connected-battery": "{device_battery_percentage}% 󰂯",
+        "format-alt": "{device_alias} 󰂯",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+        "on-click-right": "blueman-manager"
+    }, 
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         //"format": "{volume}% {icon} {format_source} ",
-        "format": "{icon} ",
+        "format": "{icon}",
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",

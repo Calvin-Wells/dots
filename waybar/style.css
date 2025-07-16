@@ -6,7 +6,7 @@
 @define-color background-alt #31363b;
 
 * {
-    font-family: Adwaita;
+    font-family: "Adwaita Mono", "Symbols Nerd Font Mono", "Font Awesome 6 Free";
     font-size: 12px;
     padding: 0;
     margin: 0;
@@ -20,6 +20,8 @@
 #workspaces button {
     padding-left: 0.5em;
     padding-right: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     color: @foreground-inactive;
 }
 
@@ -40,17 +42,13 @@
 #bat,
 #tray,
 #usage,
+#battery,
+#memory,
+#language,
+#network,
 #net {
     background-color: @background;
     border-radius: 3px;
     padding-left: 0.5em;
     padding-right: 0.5em;
-    margin-left: 0.3em;
-}
-
-#battery,
-#memory,
-#language,
-#network {
-    margin-right: 0.8em;
 }

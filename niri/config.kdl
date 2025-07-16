@@ -1,12 +1,23 @@
+//Just for laptop
+debug {
+	render-drm-device "/dev/dri/renderD128"
+}
+
+xwayland-satellite {
+	path "~/build/xwayland-satellite/target/release/xwayland-satellite"
+}
+
 input {
     keyboard {
         xkb {
+	    options "caps:swapescape"
         }
         numlock
     }
     touchpad {
         tap
         natural-scroll
+	dwt	
     }
 
     mouse {
@@ -22,20 +33,18 @@ environment {
 
 cursor {
     xcursor-theme "breeze_cursors"
+    xcursor-size 24
 }
 
-output "DP-1" {
-    mode "2560x1440"
-    transform "normal"
+output "HDMI-A-1" {
+    mode "2560x1440@75.002"
     position x=0 y=0
-    variable-refresh-rate
     focus-at-startup
 }
 
-output "DP-2"{
-    mode "1024x768"
-    transform "normal"
-    position x=2560 y=0
+output "eDP-1"{
+    scale 1.7
+    position x=0 y=1440
 }
 
 layout {
@@ -44,9 +53,9 @@ layout {
     center-focused-column "never"
 
     preset-column-widths {
-        proportion 0.3
+        proportion 0.33333
         proportion 0.5
-        proportion 0.7
+        proportion 0.66666
 
     }
 
@@ -85,6 +94,14 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
 }
 
+layer-rule {
+    match namespace="waybar"
+
+    place-within-backdrop true
+}
+
+
+
 window-rule {
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
@@ -92,6 +109,10 @@ window-rule {
 
 window-rule {
     match app-id=r#"pavucontrol$"#
+    match app-id=r#"blueman-manager$"#
+    match app-id=r#"nm-connection-editor$"#
+    match app-id=r#"1Password$"#
+    match app-id=r#"com.nextcloud.desktopclient.nextcloud$"#
     open-floating true
     default-floating-position x=10 y=10 relative-to="top-right"
 }
@@ -120,7 +141,7 @@ window-rule {
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    Mod+T hotkey-overlay-title="Open a Terminal: konsole" { spawn "konsole"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
@@ -287,4 +308,14 @@ binds {
     Mod+Shift+E { quit; }
 
     Mod+Shift+P { power-off-monitors; }
+
+    //Laptop keybinds
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+    XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    // Example brightness key mappings for brightnessctl.
+    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 }
