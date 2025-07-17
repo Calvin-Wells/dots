@@ -79,6 +79,7 @@
         "format-wifi": "",
         "format-ethernet": "",
         "tooltip-format": "{essid}:{gwaddr} via {ifname} ",
+        "format": "",
         "format-linked": "",
         "format-disconnected": "⚠",
 	"on-click": "nm-connection-editor"

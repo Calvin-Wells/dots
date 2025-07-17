@@ -1,16 +1,16 @@
 //Just for laptop
-debug {
+/-debug {
 	render-drm-device "/dev/dri/renderD128"
 }
 
-xwayland-satellite {
+/-xwayland-satellite {
 	path "~/build/xwayland-satellite/target/release/xwayland-satellite"
 }
 
 input {
     keyboard {
         xkb {
-	    options "caps:swapescape"
+          options "caps:esc"
         }
         numlock
     }
@@ -29,10 +29,12 @@ input {
 
 environment {
     QT_QPA_PLATFORM "wayland"
+    XDG_CURRENT_DESKTOP "niri"
 }
 
 cursor {
-    xcursor-theme "breeze_cursors"
+    //xcursor-theme "breeze_cursors"
+    xcursor-theme "Breeze"
     xcursor-size 24
 }
 
@@ -45,6 +47,20 @@ output "HDMI-A-1" {
 output "eDP-1"{
     scale 1.7
     position x=0 y=1440
+}
+
+output "DP-1" {
+    mode "2560x1440"
+    transform "normal"
+    position x=0 y=0
+    variable-refresh-rate on-demand=true
+    focus-at-startup
+}
+
+output "DP-2"{
+    mode "1024x768"
+    transform "normal"
+    position x=2560 y=0
 }
 
 layout {
