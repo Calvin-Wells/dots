@@ -7,7 +7,7 @@
 
 * {
   font-family: "Adwaita Mono", "Symbols Nerd Font Mono", "Font Awesome 6 Free";
-  font-size: 12px;
+  font-size: 14px;
   padding: 0;
   margin: 0;
 }
@@ -47,6 +47,8 @@
 #memory,
 #language,
 #network,
+#idle_inhibitor,
+#power-profiles-daemon,
 #net {
   background-color: @background;
   border-radius: 3px;
