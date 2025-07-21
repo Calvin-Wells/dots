@@ -26,11 +26,12 @@
 }
 
 #workspaces button.empty {
-  color: @foreground-inactive;
+  color: @background-alt;
 }
 
-#workspaces button.occupied {
-  color: @foreground;
+#workspaces button.visible {
+  color: @foreground-alt;
+  background-color: @background-inactive;
 }
 
 #workspaces button.focused {

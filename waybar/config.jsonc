@@ -12,11 +12,12 @@
   "modules-right": [
     "mpd",
     "tray",
-    "idle-inhibitor",
+    "idle_inhibitor",
     "network",
-    "bluetooth",
-    "pulseaudio",
+    //"bluetooth", //uses-blueman-applet instead
+    "wireplumber",
     "battery",
+    "power-profiles-daemon",
     "clock",
     "custom/wlogout"
   ],
@@ -44,7 +45,10 @@
   "tray": {
     // "icon-size": 21,
     "spacing": 10,
-    "show-passive-items": true
+    "show-passive-items": true,
+    "icons": {
+      "blueman": "bluetooth-symbolic"
+    }
   },
   "clock": {
     // "timezone": "America/New_York",
@@ -75,6 +79,17 @@
     "format-alt": "{time} {icon}",
     "format-icons": ["", "", "", "", ""]
   },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
   "network": {
     "format-wifi": "",
     "format-ethernet": "",
@@ -96,15 +111,16 @@
     "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
     "on-click-right": "blueman-manager"
   }, 
-  "pulseaudio": {
+  "wireplumber": {
     // "scroll-step": 1, // %, can be a float
     //"format": "{volume}% {icon} {format_source} ",
-    "format": "{icon}",
+    "format": "{volume}% {icon}",
+    "tooltop-format": "{desc} - {volume}%",
     "format-bluetooth": "{volume}% {icon} {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
-    "format-source": " {volume}% ",
-    "format-source-muted": "",
+    //"format-source": " {volume}% ",
+    //"format-source-muted": "",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -115,6 +131,13 @@
       "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
+  },
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    }
   },
   "custom/wlogout": {
     "format" : "  ",
