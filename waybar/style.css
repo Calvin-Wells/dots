@@ -6,36 +6,36 @@
 @define-color background-alt #31363b;
 
 * {
-    font-family: "Adwaita Mono", "Symbols Nerd Font Mono", "Font Awesome 6 Free";
-    font-size: 12px;
-    padding: 0;
-    margin: 0;
+  font-family: "Adwaita Mono", "Symbols Nerd Font Mono", "Font Awesome 6 Free";
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
 }
 
 #waybar {
-    color: @foreground;
-    background-color: @background;
+  color: @foreground;
+  background-color: @background;
 }
 
 #workspaces button {
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    color: @foreground-inactive;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: @foreground-inactive;
 }
 
 #workspaces button.empty {
-    color: @foreground-inactive;
+  color: @foreground-inactive;
 }
 
 #workspaces button.occupied {
-    color: @foreground;
+  color: @foreground;
 }
 
 #workspaces button.focused {
-    background-color: @foreground-alt;
-    color: @foreground-inactive;
+  background-color: @foreground-alt;
+  color: @foreground-inactive;
 }
 
 #wireplumber,
@@ -47,8 +47,8 @@
 #language,
 #network,
 #net {
-    background-color: @background;
-    border-radius: 3px;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+  background-color: @background;
+  border-radius: 3px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
