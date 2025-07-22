@@ -11,16 +11,32 @@
   ],
   "modules-right": [
     "mpd",
-    "tray",
-    "idle_inhibitor",
-    "network",
-    //"bluetooth", //uses-blueman-applet instead
+    "group/tray",
     "wireplumber",
     "battery",
-    "power-profiles-daemon",
     "clock",
     "custom/wlogout"
   ],
+
+  "group/tray": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/expander",
+      "tray",
+      "idle_inhibitor",
+      "network",
+      "power-profiles-daemon"
+      //"bluetooth", //uses-blueman-applet instead
+    ]
+  },
+
+  "custom/expander": {
+    "format": "",
+    "tooltip": false
+  },
 
   "niri/window": {
     // "format": "{app_id}",
@@ -52,8 +68,8 @@
   },
   "clock": {
     // "timezone": "America/New_York",
-    "format": "{:%I:%M%p - %d %B %Y}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "format": "{:%I:%M%p}",
+    "tooltip-format": "{:%Y %B %d}"
   },
   "cpu": {
     "format": "{usage}% ",
