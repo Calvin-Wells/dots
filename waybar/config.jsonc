@@ -11,11 +11,10 @@
   ],
   "modules-right": [
     "mpd",
-    "group/tray",
     "wireplumber",
     "battery",
     "clock",
-    "custom/wlogout"
+    "group/tray"
   ],
 
   "group/tray": {
@@ -24,18 +23,13 @@
       "transition-left-to-right": false
     },
     "modules": [
-      "custom/expander",
+      "custom/wlogout",
       "tray",
       "idle_inhibitor",
       "network",
       "power-profiles-daemon"
       //"bluetooth", //uses-blueman-applet instead
     ]
-  },
-
-  "custom/expander": {
-    "format": "",
-    "tooltip": false
   },
 
   "niri/window": {
@@ -141,7 +135,7 @@
     }
   },
   "custom/wlogout": {
-    "format" : "  ",
+    "format" : "",
     "tooltip": false,
     "on-click": "exec wlogout"
   },
