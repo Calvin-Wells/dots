@@ -259,9 +259,9 @@ binds {
 
   Mod+W { toggle-column-tabbed-display; }
 
-  Print { screenshot; }
-  Shift+Print { screenshot-screen; }
-  Alt+Print { screenshot-window; }
+  Mod+Return { screenshot; }
+  Mod+Shift+Return { screenshot-screen; }
+  Mod+Alt+Return { screenshot-window; }
 
   Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
@@ -270,8 +270,8 @@ binds {
   Mod+Shift+P { power-off-monitors; }
 
   //Laptop keybinds
-  XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
   XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
   XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
 
