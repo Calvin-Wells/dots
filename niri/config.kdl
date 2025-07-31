@@ -64,8 +64,8 @@ output "DP-2"{
 }
 
 layout {
-  //gaps 16
-  gaps 0
+  gaps 16
+  //gaps 0
 
   center-focused-column "never"
 
@@ -80,14 +80,13 @@ layout {
   default-column-width { }
 
   focus-ring {
-    off
     width 4
 
-    active-color "#7fc8ff"
-    inactive-color "#505050"
+    active-color "1c71d8"
+    inactive-color "78aeed"
   }
 
-  border {
+  /-border {
     active-gradient from="#d53369" to="#daae51" angle=45 in="srgb-linear" relative-to="workspace-view"
     inactive-gradient from="#400f20" to="#4d3b1c" angle=45 in="srgb-linear" relative-to="workspace-view"
     //linear-gradient(90deg, #d53369 0%, #daae51 100%)
@@ -95,18 +94,18 @@ layout {
   }
 
   shadow {
-    draw-behind-window true
-
-    softness 30
-
-    spread 5
-
-    offset x=0 y=5
-
-    color "#0007"
+    draw-behind-window false
+    softness 50
+    spread 10
+    offset x=0 y=10
+    color "#000f"
   }
 
   struts {
+    top -8
+    bottom -8
+    left -8
+    right -8
   }
 }
 
@@ -153,8 +152,28 @@ window-rule {
 }
 
 window-rule {
-  //geometry-corner-radius 12
-  //clip-to-geometry true
+  match is-floating=true
+  shadow {
+    on
+  }
+}
+
+window-rule {
+  match is-window-cast-target=true
+
+  shadow {
+    on
+    color "#e01b24ff"
+    inactive-color "#e01b24ff"
+    softness 0
+    spread 8
+    offset x=0 y=0
+  }
+}
+
+window-rule {
+  geometry-corner-radius 16
+  clip-to-geometry true
 }
 
 binds {
@@ -162,7 +181,7 @@ binds {
 
   Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
   Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-  Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+  Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-f" "-c" "000000"; }
 
   Mod+O repeat=false { toggle-overview; }
 
@@ -268,6 +287,10 @@ binds {
   Mod+Shift+E { quit; }
 
   Mod+Shift+P { power-off-monitors; }
+
+  Mod+X { set-dynamic-cast-window; }
+  Mod+Shift+X { set-dynamic-cast-monitor; }
+  Mod+Alt+X { clear-dynamic-cast-target; }
 
   //Laptop keybinds
   XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
