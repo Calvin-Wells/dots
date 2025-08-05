@@ -64,8 +64,8 @@ output "DP-2"{
 }
 
 layout {
-  gaps 16
-  //gaps 0
+  //gaps 16
+  gaps 0
 
   center-focused-column "never"
 
@@ -82,17 +82,17 @@ layout {
   }
 
   focus-ring {
+    off
     width 4
 
     active-color "1c71d8"
     inactive-color "78aeed"
   }
 
-  /-border {
-    active-gradient from="#d53369" to="#daae51" angle=45 in="srgb-linear" relative-to="workspace-view"
-    inactive-gradient from="#400f20" to="#4d3b1c" angle=45 in="srgb-linear" relative-to="workspace-view"
-    //linear-gradient(90deg, #d53369 0%, #daae51 100%)
-    //off
+  border {
+    width 2
+    active-color "1c71d8"
+    inactive-color "303030"
   }
 
   shadow {
@@ -103,7 +103,7 @@ layout {
     color "#000f"
   }
 
-  struts {
+  /-struts {
     top -8
     bottom -8
     left -8
@@ -173,7 +173,7 @@ window-rule {
   }
 }
 
-window-rule {
+/-window-rule {
   geometry-corner-radius 16
   clip-to-geometry true
 }
