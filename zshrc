@@ -35,6 +35,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Add node to the path
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
+export PATH="/home/calvin/.cargo/bin/:$PATH"
 
 #Set up QT
 export QT_QPA_PLATFORM="Wayland"

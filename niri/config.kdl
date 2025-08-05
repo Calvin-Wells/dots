@@ -27,6 +27,8 @@ input {
   }
 }
 
+prefer-no-csd
+
 environment {
   QT_QPA_PLATFORM "wayland"
   XDG_CURRENT_DESKTOP "niri"
