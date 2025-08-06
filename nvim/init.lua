@@ -1,5 +1,5 @@
 vim.opt.title = true
-vim.opt.splitbelow =  true
+vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.hidden = true
 vim.opt.winborder = "rounded"
@@ -18,6 +18,8 @@ vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.signcolumn = "yes"
 vim.opt.autocomplete = true
+vim.opt.list = true
+vim.opt.listchars = "space:·,tab:> ,trail:-,nbsp:+"
 
 local map = vim.keymap.set
 
@@ -30,23 +32,23 @@ map({ 'n', 'v', 'x' }, '<leader>s', ':e #<CR>')
 map({ 'n', 'v', 'x' }, '<leader>S', ':sf #<CR>')
 
 vim.pack.add({
-	{ src = "https://github.com/vague2k/vague.nvim" },
-	{ src = "https://github.com/stevearc/oil.nvim" },
-	{ src = "https://github.com/echasnovski/mini.pick" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/chomosuke/typst-preview.nvim" },
-	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
-	{ src = 'https://github.com/NvChad/showkeys',                opt = true },
+  { src = "https://github.com/vague2k/vague.nvim" },
+  { src = "https://github.com/stevearc/oil.nvim" },
+  { src = "https://github.com/echasnovski/mini.pick" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+  { src = "https://github.com/neovim/nvim-lspconfig" },
+  { src = "https://github.com/chomosuke/typst-preview.nvim" },
+  { src = "https://github.com/mason-org/mason.nvim" },
+  { src = "https://github.com/lewis6991/gitsigns.nvim" },
+  { src = 'https://github.com/NvChad/showkeys',                opt = true },
 })
 
 require "mason".setup()
 require "showkeys".setup({ position = "top-right" })
 require "nvim-treesitter.configs".setup({
-	ensure_installed = { "typescript", "javascript", "css", "java", "rust", "bash", "python", "ruby" },
-	highlight = { enable = true }
-	})
+  ensure_installed = { "typescript", "javascript", "css", "java", "rust", "bash", "python", "ruby" },
+  highlight = { enable = true }
+})
 require "mini.pick".setup()
 require "oil".setup()
 require "gitsigns".setup()
