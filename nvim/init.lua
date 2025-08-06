@@ -4,6 +4,7 @@ vim.opt.splitright = true
 vim.opt.hidden = true
 vim.opt.winborder = "rounded"
 vim.opt.tabstop = 2
+vim.opt.expandtab = true
 vim.opt.cursorcolumn = false
 vim.opt.ignorecase = true
 vim.opt.shiftwidth = 2

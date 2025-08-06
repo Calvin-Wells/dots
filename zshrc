@@ -30,10 +30,6 @@ alias vim="nvim"
 alias vi="nvim"
 alias :q="exit"
 
-#Use zoxide
-eval "$(zoxide init --cmd cd zsh)"
-
-# Add node to the path
 export PATH="/opt/homebrew/opt/node@16/bin:$PATH"
 export PATH="/home/calvin/.cargo/bin/:$PATH"
 
