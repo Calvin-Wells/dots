@@ -58,7 +58,7 @@ map('n', '<leader>h', ":Pick help<CR>")
 map('n', '<leader>e', ":Oil<CR>")
 map('n', '<leader>lf', vim.lsp.buf.format)
 
-vim.lsp.enable({ "lua_ls", "java-language-server", "python-lsp-server", "ruby-lsp", "rust-analyzer" })
+vim.lsp.enable({ "lua_ls", "java_language_server", "pylsp", "ruby_lsp", "rust_analyzer" })
 
 -- Colours
 require "vague".setup({ transparent = true })
@@ -67,3 +67,9 @@ vim.cmd(":hi statusline guibg=NONE")
 
 map('t', '<Esc>', '<C-\\><C-n>')
 map('n', '<leader>t', ":horizontal te<CR>")
+
+vim.api.nvim_create_autocmd({'BufWinEnter'}, {
+  desc = 'return cursor to where it was last time closing the file',
+  pattern = '*',
+  command = 'silent! normal! g`"zv',
+})
