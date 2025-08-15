@@ -10,7 +10,7 @@ xwayland-satellite {
 input {
   keyboard {
     xkb {
-      options "caps:esc"
+      options "caps:escape"
     }
     numlock
   }
@@ -35,8 +35,7 @@ environment {
 }
 
 cursor {
-  xcursor-theme "breeze_cursors"
-  //xcursor-theme "Breeze"
+  xcursor-theme "Breeze"
   xcursor-size 24
 }
 
@@ -66,8 +65,8 @@ output "DP-2"{
 }
 
 layout {
-  //gaps 16
-  gaps 0
+  gaps 16
+  //gaps 0
 
   center-focused-column "never"
 
@@ -84,7 +83,7 @@ layout {
   }
 
   focus-ring {
-    off
+    //off
     width 4
 
     active-color "1c71d8"
@@ -101,10 +100,12 @@ layout {
   shadow {
     on
     draw-behind-window false
-    softness 50
-    spread 10
+    softness 30
+    spread 5
     offset x=0 y=10
+    //color "#1c71d8bb"
     color "#000f"
+    inactive-color "#000a"
   }
 
   /-struts {
@@ -183,8 +184,8 @@ window-rule {
   }
 }
 
-/-window-rule {
-  geometry-corner-radius 16
+window-rule {
+  geometry-corner-radius 8
   clip-to-geometry true
 }
 
@@ -278,6 +279,8 @@ binds {
 
   Mod+C { center-column; }
   Mod+Shift+C { center-visible-columns; }
+
+  Mod+B { toggle-windowed-fullscreen; }
 
   Mod+Minus { set-column-width "-10%"; }
   Mod+Equal { set-column-width "+10%"; }
