@@ -47,3 +47,4 @@ case "$(uname -sr)" in
   Linux*)
     source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh;;
 esac
+export LIBVIRT_DEFAULT_URI="qemu:///system"
