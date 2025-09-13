@@ -1,9 +1,9 @@
 //Just for laptop
-debug {
+/-debug {
   render-drm-device "/dev/dri/renderD128"
 }
 
-xwayland-satellite {
+/-xwayland-satellite {
   path "~/build/xwayland-satellite/target/release/xwayland-satellite"
 }
 
@@ -27,7 +27,7 @@ input {
   }
 }
 
-prefer-no-csd
+//prefer-no-csd
 
 environment {
   QT_QPA_PLATFORM "wayland"
@@ -63,8 +63,14 @@ output "DP-2"{
   position x=2560 y=0
 }
 
+output "DP-3"{
+  mode "1920x1080"
+  transform "normal"
+  position x=640 y=1440
+}
+
 layout {
-  gaps 16
+  gaps 8
   //gaps 0
 
   center-focused-column "never"
@@ -82,7 +88,7 @@ layout {
   }
 
   focus-ring {
-    //off
+    off
     width 4
 
     active-color "1c71d8"

@@ -24,14 +24,17 @@
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   color: @foreground-inactive;
+  background-color: @background;
 }
 
 #workspaces button.empty {
   color: @background-inactive;
+  background-color: @background;
 }
 
 #workspaces button.focused {
   color: @foreground;
+  background-color: @background;
 }
 
 #wireplumber,
