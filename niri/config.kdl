@@ -1,23 +1,19 @@
 //Just for laptop
-debug {
+/-debug {
   render-drm-device "/dev/dri/renderD128"
-}
-
-xwayland-satellite {
-  path "~/build/xwayland-satellite/target/release/xwayland-satellite"
 }
 
 input {
   keyboard {
     xkb {
-      options "caps:escape"
+      //options "caps:escape"
     }
     numlock
   }
   touchpad {
     tap
     natural-scroll
-    dwt	
+    dwt
   }
 
   mouse {
@@ -27,16 +23,20 @@ input {
   }
 }
 
+switch-events {
+  lid-close { spawn "systemctl" "suspend"; }
+}
 //prefer-no-csd
 
 environment {
   QT_QPA_PLATFORM "wayland"
   QT_QPA_PLATFORMTHEME "kde"
   XDG_CURRENT_DESKTOP "niri"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
 }
 
 cursor {
-  xcursor-theme "Breeze"
+  xcursor-theme "breeze_cursors"
   xcursor-size 24
 }
 
@@ -75,6 +75,7 @@ layout {
   //gaps 0
 
   center-focused-column "never"
+  always-center-single-column
 
   preset-column-widths {
     proportion 0.33333
