@@ -1,9 +1,9 @@
 //Just for laptop
-/-debug {
+debug {
   render-drm-device "/dev/dri/renderD128"
 }
 
-/-xwayland-satellite {
+xwayland-satellite {
   path "~/build/xwayland-satellite/target/release/xwayland-satellite"
 }
 
@@ -31,6 +31,7 @@ input {
 
 environment {
   QT_QPA_PLATFORM "wayland"
+  QT_QPA_PLATFORMTHEME "kde"
   XDG_CURRENT_DESKTOP "niri"
 }
 
@@ -84,7 +85,7 @@ layout {
 
   //default-column-width { proportion 0.5; }
   default-column-width {
-    proportion 0.33333
+    //proportion 0.33333
   }
 
   focus-ring {
