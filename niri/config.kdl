@@ -121,6 +121,7 @@ layout {
     left -8
     right -8
   }
+  background-color "transparent"
 }
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
@@ -130,7 +131,11 @@ animations {
 
 layer-rule {
   match namespace="waybar"
+  place-within-backdrop true
+}
 
+layer-rule {
+  match namespace="wallpaper"
   place-within-backdrop true
 }
 
@@ -199,9 +204,10 @@ window-rule {
 binds {
   Mod+Shift+Slash { show-hotkey-overlay; }
 
-  Mod+T hotkey-overlay-title="Open a Terminal: konsole" { spawn "konsole"; }
-  Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-  Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-f" "-c" "000000"; }
+  Mod+T hotkey-overlay-title="Open a Terminal: konsole" { spawn-sh "konsole"; }
+  Mod+D hotkey-overlay-title="Run an Application" { spawn-sh "appdrawer"; }
+  Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn-sh "swaylock -f -c 000000"; }
+  Mod+Shift+S { spawn-sh "systemctl suspend"; }
 
   Mod+O repeat=false { toggle-overview; }
 
@@ -315,14 +321,14 @@ binds {
   Mod+Alt+X { clear-dynamic-cast-target; }
 
   //Laptop keybinds
-  XF86AudioRaiseVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05+"; }
-  XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
-  XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
-  XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+  XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "volumeosd up"; }
+  XF86AudioLowerVolume allow-when-locked=true { spawn-sh "volumeosd down"; }
+  XF86AudioMute        allow-when-locked=true { spawn-sh "volumeosd mute"; }
+  XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
-  XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
-  XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
+  XF86MonBrightnessUp allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set +5%"; }
+  XF86MonBrightnessDown allow-when-locked=true { spawn-sh "brightnessctl --class=backlight set 5%-"; }
 
   XF86LaunchA repeat=false { toggle-overview; }
-  XF86Search { spawn "fuzzel"; }
+  XF86Search { spawn-sh "appdrawer"; }
 }
