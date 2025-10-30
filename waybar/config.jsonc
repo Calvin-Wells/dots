@@ -13,35 +13,34 @@
     "mpd",
     "group/usage",
     "group/tray",
-      "custom/wlogout"
+    "custom/run",
+    "custom/wlogout"
   ],
 
   "group/usage": {
     "orientation": "inherit",
-    "drawer": {
-      "transition-left-to-right": false
-    },
+    //"drawer": {
+      //"transition-left-to-right": false
+    //},
     "modules": [
-      "battery",
       "cpu",
-      "memory",
       "temperature",
+      "memory",
+      "custom/gpu-usage",
+      "temperature#gpu",
       "network#net2"
     ]
   },
 
   "group/tray": {
     "orientation": "inherit",
-    "drawer": {
-      "transition-left-to-right": false
-    },
     "modules": [
-    "clock",
       "tray",
       "idle_inhibitor",
       "power-profiles-daemon",
       "network",
-      "wireplumber"
+      "wireplumber",
+    "clock"
       //"bluetooth", //uses-blueman-applet instead
     ]
   },
@@ -77,10 +76,7 @@
   "tray": {
     // "icon-size": 21,
     "spacing": 10,
-    "show-passive-items": true,
-    "icons": {
-      "blueman": "bluetooth-symbolic"
-    }
+    "show-passive-items": true
   },
   "clock": {
     // "timezone": "America/New_York",
@@ -88,19 +84,27 @@
     "tooltip-format": "{:%Y %B %d}"
   },
   "cpu": {
-    "format": "{usage}% ",
-    "tooltip": false
-  },
-  "memory": {
-    "format": "{}% "
+    "format": "CPU: {usage}%",
+    "tooltip": false,
+    "interval": 1
   },
   "temperature": {
-    // "thermal-zone": 2,
-    // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon/",
+    "input-filename": "temp1_input",
     "critical-threshold": 80,
-    // "format-critical": "{temperatureC}°C {icon}",
-    "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
+    "format": ",{temperatureC}°C",
+    "interval": 1
+  },
+  "memory": {
+    "format": "| MEM: {}% |",
+    "interval": 1
+  },
+  "temperature#gpu": {
+    "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:03.1/0000:2d:00.0/0000:2e:00.0/0000:2f:00.0/hwmon/",
+    "input-filename": "temp1_input",
+    "critical-threshold": 80,
+    "format": ",{temperatureC}°C |",
+    "interval": 1
   },
   "battery": {
     "states": {
@@ -132,8 +136,8 @@
     "on-click": "nm-connection-editor"
   },
   "network#net2": {
-    "interval": 5,
-    "format": "{bandwidthUpBits}↑ {bandwidthDownBits}↓"
+    "format": "{bandwidthUpBits}↑ {bandwidthDownBits}↓",
+    "interval": 1
   },
   "bluetooth": {
     "format-on": "󰂯",
@@ -153,11 +157,6 @@
     "format-icons": ["", ""],
     "on-click": "pavucontrol"
   },
-  "cpu": {
-    "interval": 10,
-    "format": "{}% ",
-    "max-length": 10
-  },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
@@ -166,13 +165,19 @@
     }
   },
   "custom/wlogout": {
-    "format" : "",
+    "format" : " ",
     "tooltip": false,
-    "on-click": "exec wlogout"
+    "on-click": "exec powermenu"
   },
   "custom/run": {
-    "format" : " ",
+    "format" : " ",
     "tooltip": false,
-    "on-click": "exec fuzzel"
+    "on-click": "exec appdrawer"
+  },
+  "custom/gpu-usage": {
+    "exec": "cat /sys/devices/pci0000:00/0000:00:03.1/0000:2d:00.0/0000:2e:00.0/0000:2f:00.0/hwmon/hwmon*/device/gpu_busy_percent",
+    "format": "GPU: {}%",
+    "return-type": "",
+    "interval": 1
   }
 }

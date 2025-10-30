@@ -1,7 +1,7 @@
 @define-color foreground #ffffff;
 @define-color foreground-alt #eff0f1;
 @define-color foreground-inactive #888888;
-@define-color background rgba(0, 0, 0, 0);
+@define-color background rgba(0, 0, 0, 255);
 @define-color background-inactive #333333;
 @define-color background-alt #31363b;
 
