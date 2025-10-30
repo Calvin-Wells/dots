@@ -1,12 +1,7 @@
-//Just for laptop
-/-debug {
-  render-drm-device "/dev/dri/renderD128"
-}
-
+include "local.kdl"
 input {
   keyboard {
     xkb {
-      //options "caps:escape"
     }
     numlock
   }
@@ -81,7 +76,13 @@ layout {
     proportion 0.33333
     proportion 0.5
     proportion 0.66666
+  }
 
+  preset-window-heights {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66666
+    proportion 1.0
   }
 
   //default-column-width { proportion 0.5; }
@@ -129,9 +130,9 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 animations {
 }
 
-layer-rule {
+/-layer-rule {
   match namespace="waybar"
-  place-within-backdrop true
+  place-within-backdrop false
 }
 
 layer-rule {
@@ -152,6 +153,11 @@ window-rule {
   match app-id=r#"com.nextcloud.desktopclient.nextcloud$"#
   open-floating true
   default-floating-position x=10 y=10 relative-to="top-right"
+}
+
+window-rule {
+  match app-id=r#"BreakTimer$"#
+  default-floating-position x=0 y=0 relative-to="top-left"
 }
 
 window-rule {
